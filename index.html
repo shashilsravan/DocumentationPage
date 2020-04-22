@@ -1,0 +1,485 @@
+<html>
+    <head>
+        <title>Python Documentation</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="styles.css" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <style>
+        body{
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    font-family: Lato;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 315px 1fr 1fr 1fr;
+    grid-template-areas: 
+    "nav main main main"
+    "nav main main main"
+    "nav main main main";
+}
+code{
+    padding: 20px;
+    margin: 20px;
+    white-space: nowrap;
+    line-height: 1.7;
+    background-color: white;
+    display: block;
+    width: 94%;
+}
+.main-section{
+    padding: 20px;
+    text-align: justify;
+}
+#navbar header{
+    padding: 20px;
+    text-align: center;
+    justify-content: flex-start;
+}
+#Reference header{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+#navbar ul{
+    margin: 0;
+    padding: 0;
+    border: 1px solid #555;
+    height: 100%;
+    list-style: none;
+    position: relative;
+    overflow-y: auto;
+}
+    #navbar{
+    width: 300px;
+    border-right: 1px solid #555;
+    height: 100%;
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+@media (max-width: 800px){
+    #navbar{
+        position: static;
+        width: 100%;
+        height: 320px;
+    }
+    body{
+        grid-template-areas: 
+        "nav nav nav nav"
+        "main main main main"
+        "main main main main";
+    }
+}
+header{
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+.nav-link:hover{
+    background: white;
+    font-size: 1.1rem;
+}
+.nav-link{
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #555;
+}
+#main-doc{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    grid-area: main;
+    height: 100%;
+}
+
+    </style>
+    </head>
+    <body>
+        <nav id="navbar">
+            <header>Python</header>
+            <ul>
+                <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+                <li><a class="nav-link" href="#Python_Interpreter">Python Interpreter</a></li>
+                <li><a class="nav-link" href="#Numbers_Strings_Lists">Numbers Strings Lists</a></li>
+                <li><a class="nav-link" href="#Conditional_Statements">Conditional Statements</a></li>
+                <li><a class="nav-link" href="#Loop_Statements">Loop Statements</a></li>
+                <li><a class="nav-link" href="#Break_and_Continue">Break and Continue</a></li>
+                <li><a class="nav-link" href="#Functions">Functions</a></li>
+                <li><a class="nav-link" href="#Lambda_Functions">Lambda Functions</a></li>
+                <li><a class="nav-link" href="#Sets">Sets</a></li>
+                <li><a class="nav-link" href="#Dictionary">Dictionary</a></li>
+                <li><a class="nav-link" href="#Tuples">Tuples</a></li>
+                <li><a class="nav-link" href="#Reference">Reference</a></li>
+
+            </ul>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="Introduction">
+                <header>Introduction</header>
+                <article>
+                    <p>
+                        Python is an easy to learn, powerful programming language. 
+                        It has efficient high-level data structures and a simple but effective 
+                        approach to object-oriented programming. Python’s elegant syntax and 
+                        dynamic typing, together with its interpreted nature, make it an ideal 
+                        language for scripting and rapid application development in many areas 
+                        on most platforms.
+                    </p>
+                    <p>
+                        The Python interpreter and the extensive standard library are freely 
+                        available in source or binary form for all major platforms from the 
+                        Python Web site, <a href="https://www.python.org/"> 
+                            https://www.python.org/</a>, and may be freely distributed. 
+                            The same site also contains distributions of and pointers to many 
+                            free third party Python modules, programs and tools, and additional
+                             documentation.
+                    </p>
+    
+                    <p>
+                        The Python interpreter is easily extended with new 
+                        functions and data types implemented in C or C++ 
+                        (or other languages callable from C). Python is also suitable as 
+                        an extension language for customizable applications.
+                    </p>
+                    <p>
+                        This tutorial introduces the reader informally to the basic 
+                        concepts and features of the Python language and system. 
+                        It helps to have a Python interpreter handy for hands-on 
+                        experience, but all examples are self-contained, so the 
+                        tutorial can be read off-line as well.
+                    </p>
+                </article>
+            </section>
+            <section class="main-section" id="Python_Interpreter">
+                <header>Python Interpreter</header>
+                <article>
+                    <p>
+                        When commands are read from a tty, the interpreter 
+                        is said to be in interactive mode. In this mode it prompts 
+                        for the next command with the primary prompt, usually three 
+                        greater-than signs (>>>); for continuation lines it prompts
+                         with the secondary prompt, by default three dots (...). 
+                         The interpreter prints a welcome message stating its version 
+                         number and a copyright notice before printing the first 
+                         prompt:
+                    </p>
+                    <code>
+                        $ python3.8 <br>
+                        Python 3.8 (default, Sep 16 2015, 09:25:04) [GCC 4.8.2] on linux
+                        <br>Type "help", "copyright", "credits" or "license" for more information.
+                        <br>>>>
+                    </code>
+                    <p>
+                        Continuation lines are needed when entering a multi-line 
+                        construct. As an example, take a look at this if statement:
+                    </p>
+                    <code>
+                        >>> the_world_is_flat = True <br>
+                        >>> if the_world_is_flat: <br>
+                        ...     print("Be careful not to fall off!") <br>
+                        ... <br>
+                        Be careful not to fall off!
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Numbers_Strings_Lists">
+                <header>Numbers Strings Lists</header>
+                <article>
+                    <p>
+                        The interpreter acts as a simple calculator: 
+                        you can type an expression at it and it will write the value. 
+                        Expression syntax is straightforward: the operators +, -, * 
+                        and / work just like in most other languages (for example, 
+                        Pascal or C); parentheses (()) can be used for grouping. 
+                        For example:
+                    </p>
+                    <code>
+                        >>> 2 + 2 <br>
+                        4   <br>
+                        >>> 50 - 5*6 <br>
+                        20  <br>
+                        >>> (50 - 5*6) / 4 <br>
+                        5.0 <br>
+                        >>> 8 / 5  # division always returns a floating point number <br>
+                        1.6
+                    </code>
+                
+                    <p>
+                        Besides numbers, Python can also manipulate strings, which can be expressed in several ways. They can be enclosed in single quotes ('...') or double quotes ("...") with the same result 2. \ can be used to escape quotes:
+                    </p>
+                    <code>
+                        >>> text = ('Put several strings within parentheses '
+                        ...         'to have them joined together.') <br>
+                        >>> text <br>
+                        'Put several strings within parentheses to have them joined together.'
+                    </code>
+                    
+                    
+                        <p>
+                            Python knows a number of compound data types, used to group together other values. The most versatile is the list, which can be written as a list of comma-separated values (items) between square brackets. Lists might contain items of different types, but usually the items all have the same type.
+                        </p>
+                        <code>
+                            >>> squares = [1, 4, 9, 16, 25] <br>
+                            >>> squares <br>
+                            [1, 4, 9, 16, 25] <br>
+                        </code>
+                        <p>
+                            Like strings (and all other built-in sequence types), lists can be indexed and sliced:
+                        </p>
+                        <code>
+                            >>> squares[0]  # indexing returns the item <br>
+                            1 <br>
+                            >>> squares[-1] <br>
+                            25 <br>
+                            >>> squares[-3:]  # slicing returns a new list <br>
+                            [9, 16, 25]
+                        </code>
+                    
+                </article>
+            </section>
+            <section class="main-section" id="Conditional_Statements">
+                <header>Conditional Statements </header>
+                <article>
+                    <p>
+                        Perhaps the most well-known statement type is the if statement. For example:
+                    </p>
+                    <code>
+                        >>> x = int(input("Please enter an integer: ")) <br>
+                        Please enter an integer: 42 <br>
+                        >>> if x < 0: <br>
+                        ...     x = 0 <br>
+                        ...     print('Negative changed to zero') <br>
+                        ... elif x == 0: <br>
+                        ...     print('Zero') <br>
+                        ... elif x == 1: <br>
+                        ...     print('Single') <br>
+                        ... else: <br>
+                        ...     print('More') <br>
+                        ...
+                    </code>
+                    <p>
+                        There can be zero or more elif parts, and the else part is optional. The keyword ‘elif’ is short for ‘else if’, and is useful to avoid excessive indentation. An if … elif … elif … sequence is a substitute for the switch or case statements found in other languages.
+                    </p>
+                </article>
+            </section>
+            <section class="main-section" id="Loop_Statements">
+                <header>Loop Statements</header>
+                <article>
+                    <p>
+                        The for statement in Python differs a bit from what you may be used to in C or Pascal. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence. For example (no pun intended):
+                    </p>
+                    <code>
+                        >>> # Measure some strings: <br>
+                        ... words = ['cat', 'window', 'defenestrate'] <br>
+                        >>> for w in words: <br>
+                        ...     print(w, len(w)) <br>
+                        ... <br>
+                        cat 3 <br>
+                        window 6 <br>
+                        defenestrate 12 <br>
+                    </code>
+                    <p>
+                        If you do need to iterate over a sequence of numbers, the built-in function range() comes in handy. It generates arithmetic progressions:
+                    </p>
+                    <code>
+                        >>> for i in range(5): <br>
+                        ...     print(i) <br>
+                        ... <br>
+                        0 <br>
+                        1 <br>
+                        2 <br>
+                        3 <br>
+                        4
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Break_and_Continue">
+                <header>Break and Continue</header>
+                <article>
+                    <p>
+                        The break statement, like in C, breaks out of the innermost enclosing for or while loop.
+                        <br>
+                        Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the iterable (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement. This is exemplified by the following loop, which searches for prime numbers:
+                    </p>
+                    <code>
+                        >>> for n in range(2, 10): <br>
+                        ...     for x in range(2, n): <br>
+                        ...         if n % x == 0: <br>
+                        ...             print(n, 'equals', x, '*', n//x) <br>
+                        ...             break <br>
+                        ...     else: <br>
+                        ...         # loop fell through without finding a factor <br>
+                        ...         print(n, 'is a prime number') <br>
+                        ... <br>
+                        2 is a prime number <br>
+                        3 is a prime number <br>
+                        4 equals 2 * 2 <br>
+                        5 is a prime number <br>
+                        6 equals 2 * 3 <br>
+                        7 is a prime number <br>
+                        8 equals 2 * 4 <br>
+                        9 equals 3 * 3 <br>
+                    </code>
+                    <p>
+                        When used with a loop, the else clause has more in common with the else clause of a try statement than it does with that of if statements: a try statement’s else clause runs when no exception occurs, and a loop’s else clause runs when no break occurs. For more on the try statement and exceptions, see Handling Exceptions.
+                    </p>
+                    <p>
+                        The continue statement, also borrowed from C, continues with the next iteration of the loop:
+                    </p>
+                    <code>
+                        >>> for num in range(2, 10): <br>
+                        ...     if num % 2 == 0: <br>
+                        ...         print("Found an even number", num) <br>
+                        ...         continue <br>
+                        ...     print("Found a number", num) <br>
+                        Found an even number 2 <br>
+                        Found a number 3 <br>
+                        Found an even number 4 <br>
+                        Found a number 5 <br>
+                        Found an even number 6 <br>
+                        Found a number 7 <br>
+                        Found an even number 8 <br>
+                        Found a number 9
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Functions">
+                <header>Functions</header>
+                <article>
+                    <p>
+                        The keyword def introduces a function definition. It must be followed by the function name and the parenthesized list of formal parameters. The statements that form the body of the function start at the next line, and must be indented.
+                    </p>
+                    <p>
+                        We can create a function that writes the Fibonacci series to an arbitrary boundary:
+                    </p>
+                    <code>
+                        >>> def fib(n):    # write Fibonacci series up to n <br>
+                        ...     """Print a Fibonacci series up to n.""" <br>
+                        ...     a, b = 0, 1 <br>
+                        ...     while a < n: <br>
+                        ...         print(a, end=' ') <br>
+                        ...         a, b = b, a+b <br>
+                        ...     print() <br>
+                        ... <br>
+                        >>> # Now call the function we just defined: <br>
+                        ... fib(2000) <br>
+                        0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 
+                    </code>
+                    <p>
+                        The actual parameters (arguments) to a function call are introduced in the local symbol table of the called function when it is called; thus, arguments are passed using call by value (where the value is always an object reference, not the value of the object). 1 When a function calls another function, a new local symbol table is created for that call.
+                    </p>
+                </article>
+            </section>
+            <section class="main-section" id="Lambda_Functions">
+                <header>Lambda Functions</header>
+                <article>
+                    <p>
+                        Small anonymous functions can be created with the lambda keyword. This function returns the sum of its two arguments: lambda a, b: a+b. Lambda functions can be used wherever function objects are required. They are syntactically restricted to a single expression. Semantically, they are just syntactic sugar for a normal function definition. Like nested function definitions, lambda functions can reference variables from the containing scope:
+                    </p>
+                    <code>
+                        >>> def make_incrementor(n): <br>
+                    ...     return lambda x: x + n <br>
+                    ... <br>
+                    >>> f = make_incrementor(42) <br>
+                    >>> f(0) <br>
+                    42 <br>
+                    >>> f(1) <br>
+                    43
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Sets">
+                <header>Sets</header>
+                <article>
+                    <p>
+                        Python also includes a data type for sets. A set is an unordered collection with no duplicate elements. Basic uses include membership testing and eliminating duplicate entries. Set objects also support mathematical operations like union, intersection, difference, and symmetric difference.
+                    </p>
+                    <p>
+                        Curly braces or the set() function can be used to create sets. Note: to create an empty set you have to use set(), not {}; the latter creates an empty dictionary, a data structure that we discuss in the next section.
+                        <br>
+                    Here is a brief demonstration:
+                    </p>
+                    <code>
+                        >>> # Demonstrate set operations on unique letters from two words <br>
+                        ... <br>
+                        >>> a = set('abracadabra') <br>
+                        >>> b = set('alacazam') <br>
+                        >>> a                                  # unique letters in a <br>
+                        {'a', 'r', 'b', 'c', 'd'} <br>
+                        >>> a - b                              # letters in a but not in b <br>
+                        {'r', 'd', 'b'} <br>
+                        >>> a | b                              # letters in a or b or both <br>
+                        {'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'} <br>
+                        >>> a & b                              # letters in both a and b <br>
+                        {'a', 'c'} <br>
+                        >>> a ^ b                              # letters in a or b but not both <br>
+                        {'r', 'd', 'b', 'm', 'z', 'l'} <br>
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Dictionary">
+                <header>Dictionary</header>
+                <article>
+                    <p>
+                        Another useful data type built into Python is the dictionary (see Mapping Types — dict). Dictionaries are sometimes found in other languages as “associative memories” or “associative arrays”. Unlike sequences, which are indexed by a range of numbers, dictionaries are indexed by keys, which can be any immutable type; strings and numbers can always be keys. Tuples can be used as keys if they contain only strings, numbers, or tuples; if a tuple contains any mutable object either directly or indirectly, it cannot be used as a key. You can’t use lists as keys, since lists can be modified in place using index assignments, slice assignments, or methods like append() and extend().    
+                    </p>
+                    <p>
+                        The dict() constructor builds dictionaries directly from sequences of key-value pairs:
+                    </p>
+                    <code>
+                        >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)]) <br>
+                        {'sape': 4139, 'guido': 4127, 'jack': 4098}
+                    </code>
+                    <p>
+                        In addition, dict comprehensions can be used to create dictionaries from arbitrary key and value expressions:
+                    </p>
+                    <code>
+                        >>> {x: x**2 for x in (2, 4, 6)} <br>
+                        {2: 4, 4: 16, 6: 36}
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Tuples">
+                <header>
+                    Tuples
+                </header>
+                <article>
+                    <p>
+                        We saw that lists and strings have many common properties, such as indexing and slicing operations. They are two examples of sequence data types (see Sequence Types — list, tuple, range). Since Python is an evolving language, other sequence data types may be added. There is also another standard sequence data type: the tuple.
+                    </p>
+                    <code>
+                        >>> t = 12345, 54321, 'hello!' <br>
+                        >>> t[0] <br>
+                        12345 <br>
+                        >>> t <br>
+                        (12345, 54321, 'hello!') <br>
+                        >>> # Tuples may be nested: <br>
+                        ... u = t, (1, 2, 3, 4, 5) <br>
+                        >>> u <br>
+                        ((12345, 54321, 'hello!'), (1, 2, 3, 4, 5)) <br>
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Reference">
+                <header>
+                    Reference
+                </header>
+                    <article>
+                        <ul>
+                            <li>
+                                <p id="link">All the documentation in this page is taken from <a href="https://docs.python.org/3/tutorial/index.html"> here</a></p>
+                            </li>  
+                            <li style="list-style: none;">This is a freecodecamp project</li>
+                            <li style="list-style: none;">Checkout more projects in my github profile</li>
+                            <li style="list-style: none;">Thank you</li>
+                            <li style="list-style: none;">Documented by Sravan</li>
+
+                    </ul>
+                    </article>
+            </section>
+        </main>
+    </body>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</html>
